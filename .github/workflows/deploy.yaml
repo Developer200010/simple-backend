@@ -19,7 +19,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: root
           key: ${{ secrets.SSH_KEY }}
-          script: |
+          script:
             cd /root/simple-backend
             git pull origin main
-            docker-compose up -d --build
+            docker compose up -d --build
