@@ -1,27 +1,25 @@
-name: Deploying Node js application to hostinger
+name: Deploying Node js application to Hostinger
 
-# when to run this acition is discided by "on".
 on:
   push:
     branches:
       - main
 
-    
 jobs:
-    deploy:
-        runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest
 
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-          - name: Deploy Via SSH
-            uses: appleboy/ssh-action@v1.0.3
-            with:
-                host: ${{secrets.SSH_HOST}}
-                username: root
-                key: ${{secrets.SSH_KEY}}
-                script: |
-                  cd /root/simple-backend
-                  git pull
-                  docker compose up -d --build
+      - name: Deploy Via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: root
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /root/simple-backend
+            git pull origin main
+            docker-compose up -d --build
