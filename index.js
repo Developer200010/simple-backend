@@ -4,7 +4,7 @@ const app = e();
 const PORT = process.env.PORT ?? 8080
 
 app.get("/", (req,res)=>{
-    res.status(200).json({message:"Server is running fine!, version 2"})
+    res.status(200).json({message:"Server is running fine!, version 3"})
 })
 
 app.listen(PORT, ()=>{
